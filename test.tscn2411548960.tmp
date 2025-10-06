@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://b85tujb2inaxb"]
+
+[ext_resource type="Script" uid="uid://q3lj5icorxwe" path="res://player.gd" id="1_37kl0"]
+[ext_resource type="Script" uid="uid://grst73jbpb7f" path="res://hud.gd" id="2_8uh7m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8uh7m"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_6uqi0"]
+sky_material = SubResource("ProceduralSkyMaterial_8uh7m")
+
+[sub_resource type="Environment" id="Environment_ppyta"]
+background_mode = 2
+sky = SubResource("Sky_6uqi0")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ykrsh"]
+height = 3.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g14j6"]
+points = PackedVector3Array(0.182602, 1.46167, 0.0455521, -0.485734, -1.10355, -0.044028, -0.485729, -1.10354, 0.0440275, 0.485734, -1.10355, 0.044028, -0.044028, 1.10355, -0.485734, -0.21899, 1.09495, 0.438074, 0.044028, -1.10355, -0.485734, 0.130336, -1.0433, 0.478275, 0.485729, 1.10354, 0.0440275, -0.438074, 1.09495, -0.21899, 0.388846, 1.07982, -0.302312, 0.302312, 1.07982, 0.388846, -0.178777, -1.29686, 0.35765, -0.302313, -1.07982, -0.388848, -0.0455521, -1.46167, -0.182602, -0.438072, 1.09494, 0.218989, 0.388848, -1.07982, -0.302313, -0.302312, -1.07982, 0.388846, 0.388846, -1.07982, 0.302312, -0.182602, 1.46167, -0.0455521, 0.272271, -1.40695, 0.0906265, 0.21899, 1.09495, -0.438074, -0.0440275, 1.10354, 0.485729, -0.302312, 1.07982, -0.388846, -0.130336, -1.0433, 0.478275, 0.469358, 0.938333, -0.170542, -0.0906251, 1.40692, 0.272266, -0.485734, 1.10355, 0.044028, 0.0906251, 1.40692, -0.272266, 0.469358, 0.938333, 0.170542, -0.170542, -0.938333, -0.469358, -0.428268, -0.984857, -0.256887)
+
+[node name="test" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ppyta")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(30, 0.5, 30)
+
+[node name="player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31087, 0)
+script = ExtResource("1_37kl0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.559914, 0)
+mesh = SubResource("CapsuleMesh_ykrsh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.559914, 0)
+shape = SubResource("ConvexPolygonShape3D_g14j6")
+
+[node name="Head" type="Node3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56264, 0)
+
+[node name="Camera3D" type="Camera3D" parent="player/Head"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="player"]
+script = ExtResource("2_8uh7m")
+
+[node name="Control" type="Control" parent="player/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="player/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = -0.0824653
+anchor_bottom = 0.00308642
+offset_right = 553.0
+offset_bottom = 42.0
+step = 1.0
+metadata/_edit_use_anchors_ = true
