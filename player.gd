@@ -41,6 +41,7 @@ func _Damage(Damage: float) -> void:
 	Health -= Damage
 
 func _physics_process(delta: float) -> void:
+	var tween = get_tree().create_tween();
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -63,11 +64,13 @@ func _physics_process(delta: float) -> void:
 		
 	#Handle crouch
 	if Input.is_action_pressed("crouch"):
-		scale.y = 0.6
+		
+		tween.tween_property($CollisionShape3D, "scale:y", 0.2, 1.0)
 		if not (Input.is_action_pressed("sprint") and input_dir != Vector2.ZERO and Stamina > 0):
 			speed = CROUCH_SPEED
 	else:
 		scale.y = 1 
+		tween.tween_property($CollisionShape3D, "scale:y", 1, 1.0)
 		
 	if Input.is_action_just_pressed("pain"):
 		if Health > 0:

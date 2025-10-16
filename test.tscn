@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b85tujb2inaxb"]
 
-[ext_resource type="Script" uid="uid://q3lj5icorxwe" path="res://player.gd" id="1_37kl0"]
-[ext_resource type="Script" uid="uid://grst73jbpb7f" path="res://hud.gd" id="2_8uh7m"]
+[ext_resource type="Script" path="res://player.gd" id="1_37kl0"]
+[ext_resource type="Script" path="res://hud.gd" id="2_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://dfmbttix7vruj" path="res://slot_1.tscn" id="3_6uqi0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8uh7m"]
@@ -70,8 +70,8 @@ mouse_filter = 2
 [node name="HealthBar" type="ProgressBar" parent="player/UI/in-game HUD"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.0015432099
-anchor_bottom = 0.0046296297
+anchor_top = 0.00154321
+anchor_bottom = 0.00462963
 offset_right = 550.0
 offset_bottom = 40.0
 step = 1.0
@@ -118,4 +118,4 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.9993181, 0, -0.036922794, 0, 1, 0, 0.036922794, 0, -0.9993181, 0, 4.268261, -10.829302)
+transform = Transform3D(-0.999318, 0, -0.0369228, 0, 1, 0, 0.0369228, 0, -0.999318, 0, 4.26826, -10.8293)
