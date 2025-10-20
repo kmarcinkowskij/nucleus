@@ -5,13 +5,19 @@ extends CharacterBody3D
 @export var Stamina = 50
 
 #physics variables
-var speed
+var speed = 0
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 10.0
 const CROUCH_SPEED = 3.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
+
+var SPRINT_MULT = 1
+var CROUCH_MULT = 1
+
 var GRAVITY = 9.8
+var can_sprint = true
+var is_crouching = false;
 
 #bobbing variables
 const BOB_FREQUENCY = 2.0
@@ -39,6 +45,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _Damage(Damage: float) -> void:
 	Health -= Damage
+	
+func _Remove_stamina(Stamina_removed: float) -> void:
+	if(Stamina > 0):
+		Stamina -= Stamina_removed
+
+func _Regain_stamina(Stamina_regained: float) -> void:
+	if(Stamina < 50):
+		Stamina += Stamina_regained
 
 func _physics_process(delta: float) -> void:
 	var tween = get_tree().create_tween();
@@ -53,24 +67,30 @@ func _physics_process(delta: float) -> void:
 	#Handle sprint
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	
-	if Input.is_action_pressed("sprint") and input_dir != Vector2.ZERO:
-		speed = SPRINT_SPEED
-		if Stamina > 0:
-			Stamina -= 0.2
+	if input_dir != Vector2.ZERO:
+		speed = WALK_SPEED * SPRINT_MULT * CROUCH_MULT
+		time_bob += delta * velocity.length() * float(is_on_floor())
+	if Input.is_action_pressed("sprint") and can_sprint:
+		SPRINT_MULT = 2.0
+		_Remove_stamina(0.2);
+		#proper head bobbing
+		
+		
 	else:
-		speed = WALK_SPEED
-		if Stamina < 50:
-			Stamina += 0.1
+		_Regain_stamina(0.1)
+		SPRINT_MULT = 1.0
 		
 	#Handle crouch
 	if Input.is_action_pressed("crouch"):
-		
 		tween.tween_property($CollisionShape3D, "scale:y", 0.2, 1.0)
-		if not (Input.is_action_pressed("sprint") and input_dir != Vector2.ZERO and Stamina > 0):
-			speed = CROUCH_SPEED
+		SPRINT_MULT = 1
+		CROUCH_MULT = 0.25
+		can_sprint = false
 	else:
+		CROUCH_MULT = 1
 		scale.y = 1 
 		tween.tween_property($CollisionShape3D, "scale:y", 1, 1.0)
+		can_sprint = true
 		
 	if Input.is_action_just_pressed("pain"):
 		if Health > 0:
@@ -99,9 +119,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 2)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 2)
 		
-	#proper head bobbing
-	time_bob += delta * velocity.length() * float(is_on_floor())
-	camera.transform.origin = _headbob(time_bob)
+	
 
 	#further fov when sprinting
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
@@ -109,7 +127,7 @@ func _physics_process(delta: float) -> void:
 	camera.fov = lerp(camera.fov, target_fov, delta * 8)
 
 	move_and_slide()
-	
+	camera.transform.origin = _headbob(time_bob)
 #"pos" instead of "position" due to an apparently already existing variable within GODOT
 #also no clue why do I have to put this function here - I wanted it closer to other functions
 #and shit just didn't work with "delta" for "time_bob" in proper head bobbing fragment
