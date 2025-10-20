@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://cg46tgv6djerc"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_dd1hi"]
+[ext_resource type="Script" path="res://hud.gd" id="2_hq37y"]
+[ext_resource type="PackedScene" uid="uid://dfmbttix7vruj" path="res://slot_1.tscn" id="3_uco10"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_phmhu"]
+height = 3.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_62hgh"]
+points = PackedVector3Array(0.182602, 1.46167, 0.0455521, -0.485734, -1.10355, -0.044028, -0.485729, -1.10354, 0.0440275, 0.485734, -1.10355, 0.044028, -0.044028, 1.10355, -0.485734, -0.21899, 1.09495, 0.438074, 0.044028, -1.10355, -0.485734, 0.130336, -1.0433, 0.478275, 0.485729, 1.10354, 0.0440275, -0.438074, 1.09495, -0.21899, 0.388846, 1.07982, -0.302312, 0.302312, 1.07982, 0.388846, -0.178777, -1.29686, 0.35765, -0.302313, -1.07982, -0.388848, -0.0455521, -1.46167, -0.182602, -0.438072, 1.09494, 0.218989, 0.388848, -1.07982, -0.302313, -0.302312, -1.07982, 0.388846, 0.388846, -1.07982, 0.302312, -0.182602, 1.46167, -0.0455521, 0.272271, -1.40695, 0.0906265, 0.21899, 1.09495, -0.438074, -0.0440275, 1.10354, 0.485729, -0.302312, 1.07982, -0.388846, -0.130336, -1.0433, 0.478275, 0.469358, 0.938333, -0.170542, -0.0906251, 1.40692, 0.272266, -0.485734, 1.10355, 0.044028, 0.0906251, 1.40692, -0.272266, 0.469358, 0.938333, 0.170542, -0.170542, -0.938333, -0.469358, -0.428268, -0.984857, -0.256887)
+
+[node name="player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+script = ExtResource("1_dd1hi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95991, 0)
+mesh = SubResource("CapsuleMesh_phmhu")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95991, 0)
+shape = SubResource("ConvexPolygonShape3D_62hgh")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.96264, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+
+[node name="UI2" type="CanvasLayer" parent="."]
+script = ExtResource("2_hq37y")
+
+[node name="in-game HUD" type="Control" parent="UI2"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="UI2/in-game HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.00154321
+anchor_bottom = 0.00462963
+offset_right = 550.0
+offset_bottom = 40.0
+step = 1.0
+value = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaminaBar" type="ProgressBar" parent="UI2/in-game HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00173611
+anchor_top = 0.0694444
+anchor_right = -0.00173611
+anchor_bottom = 0.0802469
+offset_right = 300.0
+offset_bottom = 20.0
+max_value = 50.0
+step = 0.1
+value = 50.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Hotbar" type="HBoxContainer" parent="UI2/in-game HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Slot1" parent="UI2/in-game HUD/Hotbar" instance=ExtResource("3_uco10")]
+layout_mode = 2
+
+[node name="Slot2" parent="UI2/in-game HUD/Hotbar" instance=ExtResource("3_uco10")]
+layout_mode = 2
+
+[node name="Slot3" parent="UI2/in-game HUD/Hotbar" instance=ExtResource("3_uco10")]
+layout_mode = 2
+
+[node name="Slot4" parent="UI2/in-game HUD/Hotbar" instance=ExtResource("3_uco10")]
+layout_mode = 2
