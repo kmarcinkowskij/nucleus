@@ -41,7 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-50), deg_to_rad(75))
 
 func _Damage(Damage: float) -> void:
 	Health -= Damage
@@ -51,7 +51,7 @@ func _Remove_stamina(Stamina_removed: float) -> void:
 		Stamina -= Stamina_removed
 
 func _Regain_stamina(Stamina_regained: float) -> void:
-	if(Stamina < 50):
+	if(Stamina < 50) and is_on_floor():
 		Stamina += Stamina_regained
 
 func _physics_process(delta: float) -> void:
@@ -70,7 +70,7 @@ func _physics_process(delta: float) -> void:
 	if input_dir != Vector2.ZERO:
 		speed = WALK_SPEED * SPRINT_MULT * CROUCH_MULT
 		time_bob += delta * velocity.length() * float(is_on_floor())
-	if Input.is_action_pressed("sprint") and can_sprint and Stamina > 0:
+	if Input.is_action_pressed("sprint") and can_sprint and Stamina > 0 and is_on_floor():
 		SPRINT_MULT = 2.0
 		_Remove_stamina(0.2);
 		#proper head bobbing
