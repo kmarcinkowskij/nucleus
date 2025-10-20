@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnmfs8wj0werd"]
+
+[ext_resource type="PackedScene" uid="uid://dosv5rfnp0h6m" path="res://models/building.glb" id="1_qnfc1"]
+[ext_resource type="Shader" uid="uid://5djtcc831ln3" path="res://shaders/snapping_no_alpha.gdshader" id="2_0rysw"]
+[ext_resource type="Texture2D" uid="uid://vkchpxa2w0cu" path="res://models/wall_plaster.png" id="3_ow2p3"]
+[ext_resource type="Texture2D" uid="uid://bq2kdi7evyjhi" path="res://materials/plaster.png" id="4_2vvqs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8evq1"]
+render_priority = 0
+shader = ExtResource("2_0rysw")
+shader_parameter/albedo_texture = ExtResource("3_ow2p3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lc1t6"]
+render_priority = 0
+shader = ExtResource("2_0rysw")
+shader_parameter/albedo_texture = ExtResource("4_2vvqs")
+
+[node name="building" instance=ExtResource("1_qnfc1")]
+
+[node name="Cube" parent="." index="0"]
+material_override = SubResource("ShaderMaterial_8evq1")
+
+[node name="Plane" parent="." index="1"]
+material_override = SubResource("ShaderMaterial_lc1t6")

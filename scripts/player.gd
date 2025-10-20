@@ -9,13 +9,13 @@ var speed = 0
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 10.0
 const CROUCH_SPEED = 3.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 4.5 * 2
 const SENSITIVITY = 0.003
 
 var SPRINT_MULT = 1
 var CROUCH_MULT = 1
 
-var GRAVITY = 9.8
+var GRAVITY = 9.8 * 10
 var can_sprint = true
 var is_crouching = false;
 
@@ -70,12 +70,10 @@ func _physics_process(delta: float) -> void:
 	if input_dir != Vector2.ZERO:
 		speed = WALK_SPEED * SPRINT_MULT * CROUCH_MULT
 		time_bob += delta * velocity.length() * float(is_on_floor())
-	if Input.is_action_pressed("sprint") and can_sprint:
+	if Input.is_action_pressed("sprint") and can_sprint and Stamina > 0:
 		SPRINT_MULT = 2.0
 		_Remove_stamina(0.2);
 		#proper head bobbing
-		
-		
 	else:
 		_Regain_stamina(0.1)
 		SPRINT_MULT = 1.0

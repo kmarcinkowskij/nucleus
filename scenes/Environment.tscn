@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxxu3eme0hir7"]
+
+[ext_resource type="PackedScene" uid="uid://puja12op35xq" path="res://scenes/bg_cooling_tower.tscn" id="3_wa2n3"]
+[ext_resource type="PackedScene" uid="uid://hwppqal8vf2r" path="res://scenes/scene_combined.tscn" id="4_6t8xv"]
+[ext_resource type="PackedScene" uid="uid://cnmfs8wj0werd" path="res://scenes/building.tscn" id="4_py72o"]
+[ext_resource type="PackedScene" uid="uid://cmg28t4w5cvbk" path="res://scenes/pipes.tscn" id="5_6t8xv"]
+[ext_resource type="PackedScene" uid="uid://bxvp1kvt4oys7" path="res://scenes/pipe.tscn" id="5_xn25y"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="bg_cooling_tower" parent="." instance=ExtResource("3_wa2n3")]
+transform = Transform3D(3.54, 0, 0, 0, 3.54, 0, 0, 0, 3.54, 214, 0, 0)
+
+[node name="Scene" type="Node3D" parent="."]
+
+[node name="Node3D" parent="Scene" instance=ExtResource("4_6t8xv")]
+
+[node name="pipes" parent="." instance=ExtResource("5_6t8xv")]
+transform = Transform3D(22.422354, 0, 22.422354, 0, 31.709997, 0, -22.422354, 0, 22.422354, 226, -17, 153)
+
+[node name="building" parent="." instance=ExtResource("4_py72o")]
+transform = Transform3D(-9.878774e-08, 0, 2.26, 0, 2.26, 0, -2.26, 0, -9.878774e-08, -94, 0, 0)
+
+[node name="bg_cooling_tower2" parent="." instance=ExtResource("3_wa2n3")]
+transform = Transform3D(12.5316, 0, 0, 0, 12.5316, 0, 0, 0, 12.5316, -484.44, 0, -308)
+
+[node name="pipe" parent="." instance=ExtResource("5_xn25y")]
+transform = Transform3D(18.045, 0, 0, 0, 18.045, 0, 0, 0, 18.045, -67, -28, 32)
+
+[node name="pipe2" parent="." instance=ExtResource("5_xn25y")]
+transform = Transform3D(18.045, 0, 0, 0, 18.045, 0, 0, 0, 18.045, -75, -20, 32)
+
+[node name="pipe3" parent="." instance=ExtResource("5_xn25y")]
+transform = Transform3D(18.045, 0, 0, 0, 18.045, 0, 0, 0, 18.045, 34, -20, 32)
+
+[node name="pipe4" parent="." instance=ExtResource("5_xn25y")]
+transform = Transform3D(0.47236058, 0, -18.038816, 0, 18.045, 0, 18.038816, 0, 0.47236058, 34, -25, 162)

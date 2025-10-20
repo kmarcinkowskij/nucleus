@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsvqjanvjhlwn"
-path.s3tc="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"
+uid="uid://vkchpxa2w0cu"
+path.s3tc="res://.godot/imported/wall_plaster.png-a5529e25c7fbd55294128865be98dd31.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "1fc7adb5af42a5c2a40e9b4e5b5b3e3d"
+}
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"]
+source_file="res://models/wall_plaster.png"
+dest_files=["res://.godot/imported/wall_plaster.png-a5529e25c7fbd55294128865be98dd31.s3tc.ctex"]
 
 [params]
 
@@ -39,6 +42,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=0
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

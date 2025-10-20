@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cg46tgv6djerc"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_dd1hi"]
-[ext_resource type="Script" path="res://hud.gd" id="2_hq37y"]
-[ext_resource type="PackedScene" uid="uid://dfmbttix7vruj" path="res://slot_1.tscn" id="3_uco10"]
+[ext_resource type="Script" uid="uid://q3lj5icorxwe" path="res://scripts/player.gd" id="1_dd1hi"]
+[ext_resource type="Script" uid="uid://grst73jbpb7f" path="res://scripts/hud.gd" id="2_hq37y"]
+[ext_resource type="PackedScene" uid="uid://dfmbttix7vruj" path="res://scenes/slot_1.tscn" id="3_uco10"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_phmhu"]
 height = 3.0
