@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b85tujb2inaxb"]
+
+[ext_resource type="PackedScene" uid="uid://cg46tgv6djerc" path="res://scenes/player.tscn" id="1_3vxk3"]
+[ext_resource type="Texture2D" uid="uid://08eqbse00nqm" path="res://materials/sky.exr" id="1_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://bxxu3eme0hir7" path="res://scenes/Environment.tscn" id="2_dxql5"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ppyta"]
+panorama = ExtResource("1_6uqi0")
+
+[sub_resource type="Sky" id="Sky_6uqi0"]
+sky_material = SubResource("PanoramaSkyMaterial_ppyta")
+
+[sub_resource type="Environment" id="Environment_ppyta"]
+background_mode = 2
+sky = SubResource("Sky_6uqi0")
+tonemap_mode = 2
+tonemap_exposure = 0.83
+tonemap_white = 2.38
+glow_enabled = true
+glow_intensity = 0.89
+glow_hdr_threshold = 0.18
+fog_density = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.025
+volumetric_fog_anisotropy = -0.17
+volumetric_fog_length = 86.02
+
+[node name="test" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660253, -0.4330129, 0.2500001, 0, 0.49999994, 0.86602545, -0.50000024, 0.74999994, -0.43301257, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ppyta")
+
+[node name="player" parent="." instance=ExtResource("1_3vxk3")]
+
+[node name="CSGBox3D" parent="." instance=ExtResource("2_dxql5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.710175, 0, 0)

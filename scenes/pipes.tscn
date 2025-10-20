@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmg28t4w5cvbk"]
+
+[ext_resource type="PackedScene" uid="uid://c6dby8cqg7cno" path="res://models/pipes.glb" id="1_prsvi"]
+[ext_resource type="Shader" uid="uid://5djtcc831ln3" path="res://shaders/snapping_no_alpha.gdshader" id="2_v53nb"]
+[ext_resource type="Texture2D" uid="uid://bkmj167dagwer" path="res://models/bg_cooling_tower_coconut.jpg" id="3_c66uf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y2w3"]
+render_priority = 0
+shader = ExtResource("2_v53nb")
+shader_parameter/albedo_texture = ExtResource("3_c66uf")
+
+[node name="pipes" instance=ExtResource("1_prsvi")]
+
+[node name="Cube" parent="." index="0"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Plane" parent="." index="1"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Plane_001" parent="." index="2"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Cylinder" parent="." index="3"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Cylinder_001" parent="." index="4"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Cube_002" parent="." index="5"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Plane_002" parent="." index="6"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Cylinder_002" parent="." index="7"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Plane_003" parent="." index="8"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Cylinder_003" parent="." index="9"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Cube_001" parent="." index="10"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Cylinder_004" parent="." index="11"]
+material_override = SubResource("ShaderMaterial_3y2w3")
+
+[node name="Cube_003" parent="." index="12"]
+material_override = SubResource("ShaderMaterial_3y2w3")

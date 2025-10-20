@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxvp1kvt4oys7"]
+
+[ext_resource type="PackedScene" uid="uid://core3y8mc6mgg" path="res://models/pipe.glb" id="1_arayy"]
+[ext_resource type="Shader" uid="uid://5djtcc831ln3" path="res://shaders/snapping_no_alpha.gdshader" id="2_1uqvy"]
+[ext_resource type="Texture2D" uid="uid://coabqvx164f6l" path="res://materials/floor_material.jpg" id="3_i3wvs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08mfy"]
+render_priority = 0
+shader = ExtResource("2_1uqvy")
+shader_parameter/albedo_texture = ExtResource("3_i3wvs")
+
+[node name="pipe" instance=ExtResource("1_arayy")]
+
+[node name="Plane" parent="." index="0"]
+material_override = SubResource("ShaderMaterial_08mfy")
