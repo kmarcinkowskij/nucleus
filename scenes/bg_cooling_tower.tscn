@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://puja12op35xq"]
 
-[ext_resource type="PackedScene" uid="uid://ko22oybjf03f" path="res://models/bg_cooling_tower.glb" id="1_n35on"]
-[ext_resource type="Shader" uid="uid://5djtcc831ln3" path="res://shaders/snapping_no_alpha.gdshader" id="2_n35on"]
-[ext_resource type="Texture2D" uid="uid://c3n1svfw6h60n" path="res://materials/coconut.jpg" id="3_x4nt3"]
+[ext_resource type="PackedScene" uid="uid://ko22oybjf03f" path="res://models/bg_cooling_tower.glb" id="1_ix1af"]
+[ext_resource type="Shader" uid="uid://5djtcc831ln3" path="res://shaders/snapping_no_alpha.gdshader" id="2_mxv22"]
+[ext_resource type="Texture2D" uid="uid://c3n1svfw6h60n" path="res://materials/coconut.jpg" id="3_xkht2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_os7hl"]
 render_priority = 0
-shader = ExtResource("2_n35on")
-shader_parameter/albedo_texture = ExtResource("3_x4nt3")
+shader = ExtResource("2_mxv22")
+shader_parameter/albedo_texture = ExtResource("3_xkht2")
 
-[node name="bg_cooling_tower" instance=ExtResource("1_n35on")]
+[node name="bg_cooling_tower" instance=ExtResource("1_ix1af")]
 
 [node name="Cylinder" parent="." index="0"]
 transform = Transform3D(3.32, 0, 0, 0, 3.32, 0, 0, 0, 3.32, 0, 0, 0)
