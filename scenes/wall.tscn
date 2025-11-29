@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://cpqg6erhwyl88"]
 
 [ext_resource type="PackedScene" uid="uid://g1333h2gxt3s" path="res://models/wall.glb" id="1_bbgl8"]
-[ext_resource type="Shader" uid="uid://5djtcc831ln3" path="res://shaders/snapping_no_alpha.gdshader" id="2_dy4dl"]
+[ext_resource type="Shader" path="res://shaders/snapping_no_alpha.gdshader" id="2_dy4dl"]
 [ext_resource type="Texture2D" uid="uid://vkchpxa2w0cu" path="res://models/wall_plaster.png" id="3_0m056"]
-[ext_resource type="Shader" uid="uid://cxap56xpm8p2p" path="res://shaders/snapping.gdshader" id="4_ip0a1"]
+[ext_resource type="Shader" path="res://shaders/snapping.gdshader" id="4_ip0a1"]
 [ext_resource type="Texture2D" uid="uid://bij12afkp6s25" path="res://models/wall_barb_wire.png" id="5_w36hb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h2xgo"]
@@ -17,7 +17,7 @@ shader = ExtResource("4_ip0a1")
 shader_parameter/albedo_texture = ExtResource("5_w36hb")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bbgl8"]
-data = PackedVector3Array(-20.0115, 6.5455, 0, 19.988499, -0.0341, 0, -20.0115, -0.0341, 0, -20.0115, 6.5455, 0, 19.988499, 6.5455, 0, 19.988499, -0.0341, 0)
+data = PackedVector3Array(-20.0115, 6.5455, 0, 19.9885, -0.0341, 0, -20.0115, -0.0341, 0, -20.0115, 6.5455, 0, 19.9885, 6.5455, 0, 19.9885, -0.0341, 0)
 
 [node name="wall" instance=ExtResource("1_bbgl8")]
 
@@ -25,7 +25,7 @@ data = PackedVector3Array(-20.0115, 6.5455, 0, 19.988499, -0.0341, 0, -20.0115, 
 material_override = SubResource("ShaderMaterial_h2xgo")
 
 [node name="barb_wire_003" parent="." index="1"]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.6, 0.1)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.6, 0.1)
 material_override = SubResource("ShaderMaterial_vbm8d")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]

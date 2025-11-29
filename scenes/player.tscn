@@ -1,14 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://cg46tgv6djerc"]
+[gd_scene load_steps=13 format=3 uid="uid://cg46tgv6djerc"]
 
-[ext_resource type="Script" uid="uid://q3lj5icorxwe" path="res://scripts/player.gd" id="1_dd1hi"]
-[ext_resource type="Script" uid="uid://grst73jbpb7f" path="res://scripts/hud.gd" id="2_hq37y"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_dd1hi"]
+[ext_resource type="Script" path="res://scenes/ray_cast_3d.gd" id="2_4n1ae"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="2_hq37y"]
 [ext_resource type="PackedScene" uid="uid://dfmbttix7vruj" path="res://scenes/slot_1.tscn" id="3_uco10"]
+[ext_resource type="Shader" path="res://shaders/snapping_no_alpha.gdshader" id="4_80c6q"]
+[ext_resource type="Texture2D" uid="uid://c3n1svfw6h60n" path="res://materials/coconut.jpg" id="5_5kgao"]
+[ext_resource type="Texture2D" uid="uid://ckmolrpdiv2by" path="res://materials/wall_material_flesh.jpg" id="7_ynkwr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_phmhu"]
 height = 3.0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_62hgh"]
 points = PackedVector3Array(0.182602, 1.46167, 0.0455521, -0.485734, -1.10355, -0.044028, -0.485729, -1.10354, 0.0440275, 0.485734, -1.10355, 0.044028, -0.044028, 1.10355, -0.485734, -0.21899, 1.09495, 0.438074, 0.044028, -1.10355, -0.485734, 0.130336, -1.0433, 0.478275, 0.485729, 1.10354, 0.0440275, -0.438074, 1.09495, -0.21899, 0.388846, 1.07982, -0.302312, 0.302312, 1.07982, 0.388846, -0.178777, -1.29686, 0.35765, -0.302313, -1.07982, -0.388848, -0.0455521, -1.46167, -0.182602, -0.438072, 1.09494, 0.218989, 0.388848, -1.07982, -0.302313, -0.302312, -1.07982, 0.388846, 0.388846, -1.07982, 0.302312, -0.182602, 1.46167, -0.0455521, 0.272271, -1.40695, 0.0906265, 0.21899, 1.09495, -0.438074, -0.0440275, 1.10354, 0.485729, -0.302312, 1.07982, -0.388846, -0.130336, -1.0433, 0.478275, 0.469358, 0.938333, -0.170542, -0.0906251, 1.40692, 0.272266, -0.485734, 1.10355, 0.044028, 0.0906251, 1.40692, -0.272266, 0.469358, 0.938333, 0.170542, -0.170542, -0.938333, -0.469358, -0.428268, -0.984857, -0.256887)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dtrxe"]
+render_priority = 0
+shader = ExtResource("4_80c6q")
+shader_parameter/albedo_texture = ExtResource("5_5kgao")
+
+[sub_resource type="Gradient" id="Gradient_64p7s"]
+offsets = PackedFloat32Array(0, 0.327465, 1)
+colors = PackedColorArray(0.617293, 0, 0.264737, 1, 0.522349, 0.38213, 0.0850543, 1, 0, 0.767684, 0.392719, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0tu7e"]
+gradient = SubResource("Gradient_64p7s")
+width = 790
+height = 90
+fill_from = Vector2(0, 0.553553)
+fill_to = Vector2(1, 0.533051)
 
 [node name="player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
@@ -29,6 +49,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.96264, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 current = true
 
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" node_paths=PackedStringArray("n_INVENTORY_NODE")]
+target_position = Vector3(0, 0, -3)
+script = ExtResource("2_4n1ae")
+n_INVENTORY_NODE = NodePath("../../../Inventory")
+
 [node name="UI2" type="CanvasLayer" parent="."]
 script = ExtResource("2_hq37y")
 
@@ -44,6 +69,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="HealthBar" type="ProgressBar" parent="UI2/in-game HUD"]
+material = SubResource("ShaderMaterial_dtrxe")
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.00154321
@@ -92,3 +118,15 @@ layout_mode = 2
 
 [node name="Slot4" parent="UI2/in-game HUD/Hotbar" instance=ExtResource("3_uco10")]
 layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI2/in-game HUD"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 106.0
+offset_right = 547.0
+offset_bottom = 362.0
+rounded = true
+texture_under = ExtResource("7_ynkwr")
+texture_progress = SubResource("GradientTexture2D_0tu7e")
+
+[node name="Inventory" type="Node3D" parent="."]

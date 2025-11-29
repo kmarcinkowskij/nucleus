@@ -28,6 +28,8 @@ var time_bob = 0.0
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
+var INVENTORY = []
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var pcollision = $CollisionShape3D
