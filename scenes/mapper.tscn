@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dts7s2g3xcxfy"]
+
+[ext_resource type="PackedScene" uid="uid://cj0qgc4assah6" path="res://models/dawallz.glb" id="1_4ih1g"]
+
+[node name="Mapper" type="Node3D"]
+
+[node name="dawallz" parent="." instance=ExtResource("1_4ih1g")]
