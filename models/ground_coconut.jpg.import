@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rt3yvbl7gy4j"
-path="res://.godot/imported/ground_coconut.jpg-85ed5fdf7e15bf61800bf4b3afaa121c.ctex"
+uid="uid://uvmwrjx5byc1"
+path.s3tc="res://.godot/imported/ground_coconut.jpg-85ed5fdf7e15bf61800bf4b3afaa121c.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "9356362a55c336f695dccba39fbe057f"
 }
 
 [deps]
 
 source_file="res://models/ground_coconut.jpg"
-dest_files=["res://.godot/imported/ground_coconut.jpg-85ed5fdf7e15bf61800bf4b3afaa121c.ctex"]
+dest_files=["res://.godot/imported/ground_coconut.jpg-85ed5fdf7e15bf61800bf4b3afaa121c.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +27,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
