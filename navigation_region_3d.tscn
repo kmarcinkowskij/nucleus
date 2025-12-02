@@ -1,39 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://b85tujb2inaxb"]
+[gd_scene load_steps=10 format=3 uid="uid://2ba50smenp1y"]
 
-[ext_resource type="PackedScene" uid="uid://cg46tgv6djerc" path="res://scenes/player.tscn" id="1_3vxk3"]
-[ext_resource type="Texture2D" uid="uid://08eqbse00nqm" path="res://materials/sky.exr" id="1_6uqi0"]
-[ext_resource type="Script" path="res://scenes/test.gd" id="1_jcd4p"]
-[ext_resource type="PackedScene" uid="uid://bxxu3eme0hir7" path="res://scenes/Environment.tscn" id="2_dxql5"]
-[ext_resource type="Script" path="res://scripts/monster.gd" id="4_74lek"]
-[ext_resource type="ArrayMesh" uid="uid://dlva88j34g3d3" path="res://models/monster1.obj" id="4_lpvoh"]
-[ext_resource type="AudioStream" uid="uid://dd4pkxuwb45wi" path="res://materials/slendy1.mp3" id="5_at5dv"]
-[ext_resource type="ArrayMesh" uid="uid://c061068xgf84r" path="res://models/map.obj" id="6_lpvoh"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ppyta"]
-panorama = ExtResource("1_6uqi0")
-
-[sub_resource type="Sky" id="Sky_6uqi0"]
-sky_material = SubResource("PanoramaSkyMaterial_ppyta")
-
-[sub_resource type="Environment" id="Environment_ppyta"]
-background_mode = 2
-sky = SubResource("Sky_6uqi0")
-tonemap_mode = 2
-tonemap_exposure = 0.83
-tonemap_white = 2.38
-glow_enabled = true
-glow_intensity = 0.89
-glow_hdr_threshold = 0.18
-fog_density = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.025
-volumetric_fog_anisotropy = -0.17
-volumetric_fog_length = 86.02
-
-[sub_resource type="BoxMesh" id="BoxMesh_4vv2c"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ywjt8"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[ext_resource type="Script" path="res://scripts/monster.gd" id="1_i4ffu"]
+[ext_resource type="ArrayMesh" uid="uid://dlva88j34g3d3" path="res://models/monster1.obj" id="2_nb0i0"]
+[ext_resource type="AudioStream" uid="uid://dd4pkxuwb45wi" path="res://materials/slendy1.mp3" id="3_taf6c"]
+[ext_resource type="ArrayMesh" uid="uid://c061068xgf84r" path="res://models/map.obj" id="4_75rur"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_at5dv"]
 vertices = PackedVector3Array(69.9412, 0.246892, -10.9022, 68.1912, 0.246892, -10.9022, 68.1912, 0.246892, -10.1522, 69.9412, 0.246892, -9.9022, 81.9412, 0.246892, -18.9022, 70.4412, 0.246892, -18.9022, 70.4412, 0.246892, -11.4022, 81.9412, 0.246892, -10.1522, 70.4412, 0.246892, -9.1522, 82.4412, 0.246892, -9.6522, 86.4412, 0.246892, -10.4022, 87.4412, 0.246892, -10.4022, 87.9412, 0.246892, -11.4022, 90.1912, 0.246892, -18.9022, 83.6912, 0.246892, -18.9022, 85.9412, 0.246892, -11.4022, 83.6912, 0.246892, -11.4022, 90.1912, 0.246892, -11.4022, 85.9412, 0.246892, -9.6522, 87.9412, 0.246892, -9.6522, 70.4412, 0.246892, 10.5978, 69.9412, 0.246892, 11.0978, 69.9412, 0.246892, 11.5978, 70.4412, 0.246892, 13.0978, 94.6912, 0.246892, -18.9022, 91.9412, 0.246892, -18.9022, 91.9412, 0.246892, -10.1522, 94.6912, 0.246892, -8.1522, 96.4412, 0.246892, 13.0978, 96.6912, 0.246892, -7.6522, 95.1912, 0.246892, -7.6522, 91.4412, 0.246892, -9.6522, 56.1912, 0.246892, 11.0978, 56.4412, 0.246892, 11.5978, 38.1912, 0.246892, -3.9022, 40.6912, 0.246892, -3.9022, 40.6912, 0.246892, -9.6522, 38.1912, 0.246892, -10.6522, 41.1912, 0.246892, -10.1522, 107.941, 0.246892, 13.0978, 107.941, 0.246892, 5.0978, 107.441, 0.246892, 4.8478, 107.441, 0.246892, 0.847801, 107.941, 0.246892, 0.597801, 107.941, 0.246892, -7.6522, 38.1912, 0.246892, 2.8478, 38.1912, 0.246892, 4.8478, 40.6912, 0.246892, 4.8478, 40.6912, 0.246892, 1.8478, 41.1912, 0.246892, 1.3478, 46.6912, 0.246892, 1.3478, 46.6912, 0.246892, 0.0978012, 41.1912, 0.246892, 0.0978012, 37.6912, 0.246892, 2.3478, 38.1912, 0.246892, -1.9022, 40.6912, 0.246892, -0.402199, 37.6912, 0.246892, -1.4022, 33.4412, 0.246892, -1.4022, 33.4412, 0.246892, 2.3478, 24.4412, 0.246892, -3.1522, 24.9412, 0.246892, -0.652199, 25.6912, 0.246892, -1.4022, 26.6912, 0.246892, -1.4022, 31.1912, 0.246892, -1.9022, 31.1912, 0.246892, -3.1522, 24.9412, 0.246892, 0.847801, 24.4412, 0.246892, 4.0978, 27.1912, 0.246892, -0.902199, 25.4412, 0.246892, 1.3478, 26.6912, 0.246892, 1.3478, 31.6912, 0.246892, 2.3478, 31.6912, 0.246892, -1.4022, 31.1912, 0.246892, 2.8478, 27.1912, 0.246892, 0.847801, 31.1912, 0.246892, 4.0978, 48.4412, 0.246892, 1.3478, 48.4412, 0.246892, 0.0978012, 48.9412, 0.246892, 1.8478, 48.9412, 0.246892, 4.3478, 57.6912, 0.246892, 4.3478, 57.6912, 0.246892, 1.0978, 48.9412, 0.246892, -0.402199, 58.9412, 0.246892, 0.597801, 58.9412, 0.246892, -2.6522, 48.9412, 0.246892, -2.6522, 40.4412, 0.246892, 12.0978, 40.4412, 0.246892, 16.8478, 42.1912, 0.246892, 16.8478, 42.1912, 0.246892, 12.0978, 42.6912, 0.246892, 11.5978, 41.1912, 0.246892, 11.0978, 39.9412, 0.246892, 11.5978, 40.6912, 0.246892, 10.5978, 38.1912, 0.246892, 11.5978)
@@ -58,122 +28,63 @@ _data = {
 }
 point_count = 5
 
-[node name="test" type="Node3D" node_paths=PackedStringArray("player_handle")]
-script = ExtResource("1_jcd4p")
-player_handle = NodePath("player")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ppyta")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.71596, 1.86295, 0)
-metadata/name = "dick"
-metadata/id = 0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_4vv2c")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ywjt8")
-metadata/name = "dick"
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.71596, 1.86295, 2.10825)
-metadata/name = "balls"
-metadata/id = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-mesh = SubResource("BoxMesh_4vv2c")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-shape = SubResource("ConcavePolygonShape3D_ywjt8")
-metadata/name = "dick"
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.71596, 1.86295, 4.22566)
-metadata/name = "shaft"
-metadata/id = 2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
-mesh = SubResource("BoxMesh_4vv2c")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
-shape = SubResource("ConcavePolygonShape3D_ywjt8")
-metadata/name = "dick"
-
-[node name="player" parent="." instance=ExtResource("1_3vxk3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9545, 0.313388, 0)
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.710175, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_at5dv")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="NavigationRegion3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(-4.80825e-08, 0, 1.1, 0, 1.1, 0, -1.1, 0, -4.80825e-08, 66.3602, 0.560424, 11.3355)
-script = ExtResource("4_74lek")
+script = ExtResource("1_i4ffu")
 target_path = NodePath("../Path3D/PathFollow3D")
 player_path = NodePath("../../player")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NavigationRegion3D/CharacterBody3D"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 path_height_offset = 0.2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, 0, 0, 0)
-mesh = ExtResource("4_lpvoh")
+mesh = ExtResource("2_nb0i0")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NavigationRegion3D/CharacterBody3D"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CharacterBody3D"]
 transform = Transform3D(0.909091, 0, 0, 0, 0.909091, 0, 0, 0, 0.909091, 0, 1.70928, 0)
-stream = ExtResource("5_at5dv")
+stream = ExtResource("3_taf6c")
 
-[node name="ChaseTimer" type="Timer" parent="NavigationRegion3D/CharacterBody3D"]
+[node name="ChaseTimer" type="Timer" parent="CharacterBody3D"]
 autostart = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 1.47122, 0)
 shape = SubResource("CapsuleShape3D_at5dv")
 
-[node name="vision1" type="Area3D" parent="NavigationRegion3D/CharacterBody3D"]
+[node name="vision1" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, -9.25214e-18, -7.10543e-15, 3.22974e-15, 1, 0, 0, 2.11664e-10, 1, 0, 5.96046e-08, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/CharacterBody3D/vision1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/vision1"]
 transform = Transform3D(1, 3.28448e-22, 0, -9.59265e-20, 1, 0, -1.3074e-12, 1.42846e-29, 1, 0, 1.92372, 0)
 shape = SubResource("CylinderShape3D_jcd4p")
 
-[node name="Vision" type="RayCast3D" parent="NavigationRegion3D/CharacterBody3D"]
+[node name="Vision" type="RayCast3D" parent="CharacterBody3D"]
 transform = Transform3D(2, -1.85043e-17, -2.13163e-14, 6.45948e-15, 2, 2.29487e-30, -7.10543e-15, 4.23328e-10, 2, 0, 2.20193, -0.648678)
 target_position = Vector3(0, 5, -40)
 hit_from_inside = true
 debug_shape_custom_color = Color(0.768655, 0.000456472, 0.768649, 1)
 debug_shape_thickness = 5
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.6083, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0427933, -2.38419e-07, -0.00112152)
-mesh = ExtResource("6_lpvoh")
+mesh = ExtResource("4_75rur")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 shape = SubResource("ConcavePolygonShape3D_at5dv")
 
-[node name="Path3D" type="Path3D" parent="NavigationRegion3D"]
+[node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.0353, 0, 0)
 curve = SubResource("Curve3D_uacia")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="NavigationRegion3D/Path3D"]
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
 transform = Transform3D(0.011842, 0, 0.999866, 0, 0.999954, 0, -0.999914, 0, 0.0118414, 5.47803, -0.0543213, 11.6521)
 
-[node name="CSGBox3D" parent="." instance=ExtResource("2_dxql5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.710175, 0, 0)
-
-[connection signal="timeout" from="NavigationRegion3D/CharacterBody3D/ChaseTimer" to="NavigationRegion3D/CharacterBody3D" method="_on_chase_timer_timeout"]
+[connection signal="timeout" from="CharacterBody3D/ChaseTimer" to="CharacterBody3D" method="_on_chase_timer_timeout"]

@@ -28,15 +28,21 @@ var time_bob = 0.0
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
-var INVENTORY = []
+var inventory_array = [null, null];
+var equippable_objects
+var selected = false
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var pcollision = $CollisionShape3D
 
+signal dropped_item(item_name)
+
 #puts mouse in captured mode
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$Head/Camera3D/RayCast3D.picked_up_item.connect(pick_up_item)
+	equippable_objects = GlobalVars.equippable_objects
 
 #camera work, making sure you cannot cartwheel and go mental
 func _unhandled_input(event: InputEvent) -> void:
@@ -44,6 +50,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-50), deg_to_rad(75))
+
+func item_dropped():
+	inventory_array[int(selected)] = null;
+	emit_signal("dropped_item", inventory_array[int(selected)])
+	
 
 func _Damage(Damage: float) -> void:
 	Health -= Damage
@@ -57,6 +68,18 @@ func _Regain_stamina(Stamina_regained: float) -> void:
 		Stamina += Stamina_regained
 
 func _physics_process(delta: float) -> void:
+	if(Input.is_action_just_pressed("drop_item")):
+		item_dropped()
+		
+		
+	if(Input.is_action_just_pressed("change_selected_inventory_slot")):
+		print("selected inventory slot: " + str(int(selected)))
+		selected = !selected
+		if(inventory_array[int(selected)] == null):
+			return;
+		print("slot populated with item: " + equippable_objects[inventory_array[int(selected)]]);
+		print(inventory_array)
+		
 	var tween = get_tree().create_tween();
 	# Add the gravity.
 	if not is_on_floor():
@@ -136,3 +159,15 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQUENCY) * BOB_AMPLITUDE
 	pos.x = cos(time * BOB_FREQUENCY / 2) * BOB_AMPLITUDE
 	return pos
+	
+func pick_up_item(current_looked):
+	if equippable_objects.has(current_looked.get_meta("id")):
+			for inventory_index in range(inventory_array.size()):
+				if(inventory_array[inventory_index] == null):
+					inventory_array[inventory_index] = current_looked.get_meta("id")
+					print("item: " + equippable_objects[current_looked.get_meta("id")] + "\ninventory slot: " + str(inventory_index));
+					current_looked.queue_free();
+					return;
+				print("all inventory slots filled!");
+	
+					
