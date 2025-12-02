@@ -2,24 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5hkjw3n5phye"
-path.s3tc="res://.godot/imported/scene_ground_plaster.png-e5a4c0bef1fe7e57202f287ddb5d7394.s3tc.ctex"
+uid="uid://c1vq5uawbwtp0"
+path="res://.godot/imported/sprite_interactable_2.jpg-9a3e097edad2e176df1e077d81aefc32.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "1fc7adb5af42a5c2a40e9b4e5b5b3e3d"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/scene_ground_plaster.png"
-dest_files=["res://.godot/imported/scene_ground_plaster.png-e5a4c0bef1fe7e57202f287ddb5d7394.s3tc.ctex"]
+source_file="res://resources/interactable_objects/interactables_sprites/sprite_interactable_2.jpg"
+dest_files=["res://.godot/imported/sprite_interactable_2.jpg-9a3e097edad2e176df1e077d81aefc32.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -27,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -41,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

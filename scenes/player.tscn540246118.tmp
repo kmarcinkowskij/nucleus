@@ -64,8 +64,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_right = 3.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -103,37 +103,21 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -64.0
+offset_left = -20.0
 offset_top = -40.0
-offset_right = 31.0
+offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="slot_1_bg" type="ColorRect" parent="UI2/in-game HUD/Hotbar"]
+[node name="slot_1" type="TextureRect" parent="UI2/in-game HUD/Hotbar"]
 layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="slot_1" type="TextureRect" parent="UI2/in-game HUD/Hotbar/slot_1_bg"]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 44.0
-offset_bottom = 40.0
 texture = ExtResource("6_fjrip")
 expand_mode = 2
 
-[node name="slot_2_bg" type="Panel" parent="UI2/in-game HUD/Hotbar"]
+[node name="slot_2" type="TextureRect" parent="UI2/in-game HUD/Hotbar"]
 layout_mode = 2
-
-[node name="slot_2" type="TextureRect" parent="UI2/in-game HUD/Hotbar/slot_2_bg"]
-layout_mode = 0
-offset_left = -44.0
-offset_right = -4.0
-offset_bottom = 40.0
 texture = ExtResource("6_fjrip")
 expand_mode = 2
-
-[node name="BoxContainer" type="BoxContainer" parent="UI2/in-game HUD/Hotbar"]
-layout_mode = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="UI2/in-game HUD"]
 layout_mode = 0

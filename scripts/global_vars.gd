@@ -1,5 +1,5 @@
 extends Node
-var equippable_objects = {0:"test_item_1", 1:"test_item_2", 2:"test_item_3"};
+var equippable_objects = {0:"interactable_0", 1:"interactable_1", 2:"interactable_2",3:"interactable_3"};
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
