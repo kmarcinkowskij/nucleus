@@ -44,6 +44,7 @@ signal dropped_item(item_name)
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$Head/Camera3D/RayCast3D.picked_up_item.connect(pick_up_item)
+	$Head/Camera3D/RayCast3D.interacted_with_item.connect(interact_with_item)
 	
 
 #camera work, making sure you cannot cartwheel and go mental
@@ -171,6 +172,15 @@ func _headbob(time) -> Vector3:
 	pos.x = cos(time * BOB_FREQUENCY / 2) * BOB_AMPLITUDE
 	return pos
 	
+func damage(current_looked, damage_amount):
+	if(current_looked.has_meta("damage_possible")):
+		if(current_looked.has_meta("damage_possible")):
+			var current_looked_hp = current_looked.get_meta("health");
+			print("was " + str(current_looked.get_meta("health")) + ", is " + str(current_looked_hp - damage_amount))
+			current_looked.set_meta("health", current_looked_hp - damage_amount);
+			if(current_looked.get_meta("health") <= 0):
+				current_looked.get_parent_node_3d().queue_free()
+
 func pick_up_item(current_looked):
 	if equippable_objects.has(current_looked.get_meta("id")):
 			print("picking up: " + str(current_looked.get_meta("id")))
@@ -185,6 +195,9 @@ func pick_up_item(current_looked):
 					return;
 				print("all inventory slots filled!");
 	
+func interact_with_item(current_looked):
+	if(current_looked.get_meta("id") == 6):
+		damage(current_looked, 33)
 func change_selected():
 		selected = !selected
 		if(inventory_array[int(selected)] == null):
@@ -228,13 +241,13 @@ func handle_hand(item_index):
 		self_interactable = true;	
 	else:
 		print(child.get_child(0).get_meta_list());
-		$"UI2/in-game HUD/medkit text".text = "no action availible";
+		$"UI2/in-game HUD/medkit text".text = "no action available";
 		self_interactable = true;
 
 func clear_hand(item_index, used):
 		if(used):
 			item_removed()
-		$"UI2/in-game HUD/medkit text".text = "no action availible"
+		$"UI2/in-game HUD/medkit text".text = "no action available"
 		self_interactable = true;
 		$Head/Camera3D/Hand.remove_child($Head/Camera3D/Hand.get_child(0))
 

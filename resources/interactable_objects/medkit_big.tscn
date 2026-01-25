@@ -13,6 +13,7 @@ collision_layer = 2
 metadata/id = 5
 metadata/interactable = true
 metadata/object_type = 2
+metadata/pick_up_possible = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_f3tkp")

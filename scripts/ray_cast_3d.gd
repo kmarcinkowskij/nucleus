@@ -8,6 +8,7 @@ func _ready() -> void:
 	#equippable_objects = GlobalVars.equippable_objects
 
 signal picked_up_item(item_id);
+signal interacted_with_item(item_id);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,8 +25,10 @@ func _process(delta: float) -> void:
 			
 		var current_looked = get_collider()
 		
-		emit_signal("picked_up_item", current_looked)
-			
+		if(get_collider().has_meta("pick_up_possible")):
+			emit_signal("picked_up_item", current_looked)
+			return
+		emit_signal("interacted_with_item", current_looked)
 		
 		
 	
