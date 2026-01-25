@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b85tujb2inaxb"]
+[gd_scene load_steps=23 format=3 uid="uid://b85tujb2inaxb"]
 
 [ext_resource type="Script" uid="uid://cejc1ubmpu4si" path="res://scripts/main.gd" id="1_1vq1v"]
 [ext_resource type="Texture2D" uid="uid://08eqbse00nqm" path="res://materials/sky.exr" id="2_5pv02"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cao7xhb0e34p7" path="res://resources/interactable_objects/interactable_1.tscn" id="10_dfwg7"]
 [ext_resource type="PackedScene" uid="uid://3vjrnvlyes4g" path="res://resources/interactable_objects/interactable_2.tscn" id="11_la7hl"]
 [ext_resource type="PackedScene" uid="uid://cbi1e023jn8x5" path="res://resources/interactable_objects/interactable_3.tscn" id="12_dfwg7"]
+[ext_resource type="PackedScene" uid="uid://ce2exagiqutj3" path="res://resources/interactable_objects/medkit.tscn" id="13_la7hl"]
+[ext_resource type="PackedScene" uid="uid://cyfkgqwmjsue8" path="res://resources/interactable_objects/medkit_big.tscn" id="14_3txl1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ppyta"]
 panorama = ExtResource("2_5pv02")
@@ -72,7 +74,7 @@ environment = SubResource("Environment_ppyta")
 bus = &"Music"
 
 [node name="player" parent="." instance=ExtResource("3_wiw1g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9545, 0.313388, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.567837, 0.313388, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.710175, 0, 0)
@@ -131,7 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.0353, 0, 0)
 curve = SubResource("Curve3D_uacia")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="NavigationRegion3D/Path3D"]
-transform = Transform3D(0.0118441265, 0, 0.99986345, 0, 0.999954, 0, -0.99991393, 0, 0.011843529, 5.47803, -0.0543213, 11.6521)
+transform = Transform3D(0.0118441265, 0, 0.99986213, 0, 0.999954, 0, -0.99991393, 0, 0.011843513, 5.47803, -0.0543213, 11.6521)
 
 [node name="CSGBox3D" parent="." instance=ExtResource("8_v6x8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.710175, 0, 0)
@@ -147,5 +149,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1229815, 1.0303942, 6.9891
 
 [node name="interactable_2" parent="." instance=ExtResource("11_la7hl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.756678, 1.0282321, -4.08695)
+
+[node name="Medkit" parent="." instance=ExtResource("13_la7hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4936566, 1.0042685, -1.4142299)
+
+[node name="Medkit2" parent="." instance=ExtResource("14_3txl1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.904379, 1.0766022, -3.2989519)
 
 [connection signal="timeout" from="NavigationRegion3D/CharacterBody3D/ChaseTimer" to="NavigationRegion3D/CharacterBody3D" method="_on_chase_timer_timeout"]

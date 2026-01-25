@@ -144,3 +144,13 @@ offset_bottom = 362.0
 rounded = true
 texture_under = ExtResource("7_ynkwr")
 texture_progress = SubResource("GradientTexture2D_0tu7e")
+
+[node name="medkit text" type="Label" parent="UI2/in-game HUD"]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 460.0
+offset_right = 680.0
+offset_bottom = 555.0
+text = "press f to defecate"
+horizontal_alignment = 1
+vertical_alignment = 1

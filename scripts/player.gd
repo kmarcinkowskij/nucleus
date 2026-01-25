@@ -30,6 +30,7 @@ const FOV_CHANGE = 1.5
 
 var inventory_array = [null, null];
 var selected = false
+var self_interactable = false;
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -44,7 +45,6 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$Head/Camera3D/RayCast3D.picked_up_item.connect(pick_up_item)
 	
-	
 
 #camera work, making sure you cannot cartwheel and go mental
 func _unhandled_input(event: InputEvent) -> void:
@@ -56,6 +56,14 @@ func _unhandled_input(event: InputEvent) -> void:
 func _Damage(Damage: float) -> void:
 	Health -= Damage
 	
+func _Heal(heal_amount) -> void:
+	if(Health == 100):
+		return
+	if(Health + heal_amount > 100):
+		Health = 100;
+		return
+	Health += heal_amount
+	
 func _Remove_stamina(Stamina_removed: float) -> void:
 	if(Stamina > 0):
 		Stamina -= Stamina_removed
@@ -63,7 +71,6 @@ func _Remove_stamina(Stamina_removed: float) -> void:
 func _Regain_stamina(Stamina_regained: float) -> void:
 	if(Stamina < 50) and is_on_floor():
 		Stamina += Stamina_regained
-
 	
 
 		
@@ -114,6 +121,15 @@ func _physics_process(delta: float) -> void:
 		if Health > 0:
 			_Damage(10)
 		
+	if Input.is_action_just_pressed("item_interaction"):
+		if(self_interactable):
+			if(inventory_array[int(selected)] == 4):
+				_Heal(20);
+				clear_hand(inventory_array[int(selected)], true)
+			if(inventory_array[int(selected)] == 5):
+				_Heal(50);
+				clear_hand(inventory_array[int(selected)], true)
+			
 	if Input.is_action_just_pressed("heal"):
 		if Health < 100:
 			Health += 10
@@ -164,7 +180,7 @@ func pick_up_item(current_looked):
 					handle_hand(inventory_array[int(selected)])
 					print("pick tries to spawn item at index: " + str(inventory_index))
 					handle_slots_gui_item_picked_up(inventory_array[int(selected)])
-					selected = !selected
+					#selected = !selected
 					current_looked.queue_free();
 					return;
 				print("all inventory slots filled!");
@@ -172,7 +188,7 @@ func pick_up_item(current_looked):
 func change_selected():
 		selected = !selected
 		if(inventory_array[int(selected)] == null):
-			clear_hand(int(selected))
+			clear_hand(int(selected), false)
 			return;
 		handle_hand(inventory_array[int(selected)])
 		print(inventory_array)	
@@ -201,9 +217,21 @@ func handle_hand(item_index):
 		return;
 	var child = interactables_controller.spawn(item_index).instantiate();
 	$Head/Camera3D/Hand.add_child(child)
-	child.get_child(0).set_meta("id", item_index)			
+	child.get_child(0).set_meta("id", item_index)
+	if(child.get_child(0).has_meta("object_type") and child.get_child(0).get_meta("object_type") == 1):
+		print("medkit")
+		$"UI2/in-game HUD/medkit text".text = "(f) - use medkit";
+		self_interactable = true;
+	else:
+		print(child.get_child(0).get_meta_list());
+		$"UI2/in-game HUD/medkit text".text = "no action availible";
+		self_interactable = true;
 
-func clear_hand(item_index):
+func clear_hand(item_index, used):
+		if(used):
+			item_removed()
+		$"UI2/in-game HUD/medkit text".text = "no action availible"
+		self_interactable = true;
 		$Head/Camera3D/Hand.remove_child($Head/Camera3D/Hand.get_child(0))
 
 func change_slot_focus():
@@ -220,5 +248,13 @@ func item_dropped():
 	handle_slots_gui_item_dropped();
 	print("dropped item: " + str(inventory_array[int(selected)]))
 	emit_signal("dropped_item", inventory_array[int(selected)])
+	inventory_array[int(selected)] = null
+	
+func item_removed():
+	if(inventory_array[int(selected)] == null):
+		return
+	$Head/Camera3D/Hand.remove_child($Head/Camera3D/Hand.get_child(0))
+	handle_slots_gui_item_dropped();
+	print("used item: " + str(inventory_array[int(selected)]))
 	inventory_array[int(selected)] = null
 	
