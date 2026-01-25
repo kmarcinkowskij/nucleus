@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://3vjrnvlyes4g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yv0lk"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_r5t06"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="interactable_2" type="Node3D"]
+metadata/id = 2
+metadata/interactable = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+metadata/id = 2
+metadata/interactable = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_yv0lk")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_r5t06")
+metadata/name = "dick"
+
+[node name="Label3D" type="Label3D" parent="StaticBody3D"]
+offset = Vector2(0, 150)
+billboard = 1
+text = "interactable_2
+"

@@ -4,7 +4,7 @@ var target = null
 var player = null
 @export var chasepoints = 10
 var ustates = ["PATROL", "CHASE"]
-const faster = 3.5
+const faster = 5.0
 var ustate_current = ustates[0]
 
 var body = null
@@ -65,8 +65,8 @@ func _on_chase_timer_timeout() -> void:
 		for overlap in overlaper:
 			if overlap.name == "player":
 				print("faggot nearby")
-				var playerlocation = player.global_transform.origin
-				$Vision.look_at(playerlocation, Vector3.UP)
+				
+				$Vision.look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 				$Vision.force_raycast_update()
 				if $Vision.is_colliding():
 					var collisionsrc = $Vision.get_collider()
@@ -75,6 +75,6 @@ func _on_chase_timer_timeout() -> void:
 						print("faggot spotted CHASE GO")
 						sees_player = true
 			else:
-				print("no faggot nearby, killing myself")
+				#print("no faggot nearby, killing myself")
 				sees_player = false
 				
