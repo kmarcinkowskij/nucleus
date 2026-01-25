@@ -218,10 +218,14 @@ func handle_hand(item_index):
 	var child = interactables_controller.spawn(item_index).instantiate();
 	$Head/Camera3D/Hand.add_child(child)
 	child.get_child(0).set_meta("id", item_index)
-	if(child.get_child(0).has_meta("object_type") and child.get_child(0).get_meta("object_type") == 1):
+	if(inventory_array[int(selected)] == 4):
 		print("medkit")
 		$"UI2/in-game HUD/medkit text".text = "(f) - use medkit";
 		self_interactable = true;
+	elif(inventory_array[int(selected)] == 5):
+		print("medkit")
+		$"UI2/in-game HUD/medkit text".text = "(f) - use BIG medkit";
+		self_interactable = true;	
 	else:
 		print(child.get_child(0).get_meta_list());
 		$"UI2/in-game HUD/medkit text".text = "no action availible";
